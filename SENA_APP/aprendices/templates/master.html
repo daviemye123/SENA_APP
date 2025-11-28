@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'master.css' %}">
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+    {% block extra_css %}{% endblock %}
+
+</head>
+<body>
+
+    <header class="sena-header">
+        <div class="sena-header-content">
+            <div class="sena-logo-container">
+                <img src="{% static 'SENA.png' %}" alt="SENA APP Logo" class="sena-logo-img"> 
+                <span class="sena-app-text">SENA APP</span>
+            </div>
+            <nav class="sena-nav">
+                <a href="/">Inicio</a> 
+                <a href="/admin/">Panel Admin</a> 
+            </nav>
+        </div>
+    </header>
+   
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+</body>
+</html>

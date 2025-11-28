@@ -1,0 +1,197 @@
+.details-container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+    color: #666;
+    font-size: 0.95em;
+    margin-bottom: 25px;
+}
+
+.breadcrumb a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+/* Barra de Título del Perfil */
+.profile-title-bar {
+    background-color: #343a40;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 6px 6px 0 0;
+    font-size: 1.3em;
+    font-weight: 600;
+}
+
+/* Tarjeta de Perfil */
+.profile-card-sena {
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
+    display: flex;
+    overflow: hidden;
+}
+
+/* Barra Lateral del Perfil */
+.profile-sidebar {
+    background: linear-gradient(135deg, #008744 0%, #006b36 100%);
+    color: white;
+    padding: 40px 30px;
+    text-align: center;
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Avatar del Perfil */
+.profile-avatar {
+    width: 100px;
+    height: 100px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    border: 3px solid white;
+}
+
+/* Nombre del Perfil */
+.profile-name {
+    font-size: 1.5em;
+    margin: 0;
+    line-height: 1.4;
+    font-weight: 600;
+}
+
+/* Contenido de Información del Perfil */
+.profile-info-content {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Panel de Información */
+.info-panel {
+    margin-bottom: 30px;
+}
+
+.info-panel h4 {
+    color: #343a40;
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #00bcd4;
+    padding-bottom: 10px;
+}
+
+/* Grupos de Información */
+.info-group {
+    display: flex;
+    margin-bottom: 15px;
+    align-items: flex-start;
+}
+
+.info-label {
+    font-weight: 600;
+    color: #555;
+    min-width: 160px;
+    font-size: 0.95em;
+}
+
+.info-value {
+    color: #333;
+    font-size: 0.95em;
+    flex: 1;
+}
+
+.info-value-link a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.info-value-link a:hover {
+    text-decoration: underline;
+}
+
+/* Acciones dentro de los detalles */
+.details-actions {
+    margin-top: 20px;
+    border-top: 1px solid #e9ecef;
+    padding-top: 20px;
+}
+
+.btn-edit-profile {
+    background-color: #008744;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.95em;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+}
+
+.btn-edit-profile:hover {
+    background-color: #006b36;
+}
+
+/* Acciones al pie */
+.details-actions-bottom {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.btn-back {
+    background-color: #17a2b8;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.95em;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+}
+
+.btn-back:hover {
+    background-color: #138496;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .profile-card-sena {
+        flex-direction: column;
+    }
+    
+    .profile-sidebar {
+        min-width: 100%;
+    }
+    
+    .profile-info-content {
+        padding: 30px 20px;
+    }
+    
+    .info-group {
+        flex-direction: column;
+    }
+    
+    .info-label {
+        min-width: 100%;
+        margin-bottom: 5px;
+    }
+}

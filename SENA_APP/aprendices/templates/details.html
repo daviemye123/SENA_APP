@@ -1,0 +1,87 @@
+{% extends "master.html" %}
+{% load static %}
+
+{% block title %}
+    Detalles de Aprendiz: {{ aprendices.firstname }} {{ aprendices.lastname }}
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'details.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="details-container">
+    
+    <p class="breadcrumb">
+        <a href="/">Inicio</a> / 
+        <a href="/aprendices/">Lista Aprendices</a> / 
+        {{ aprendices.firstname }} {{ aprendices.lastname }}
+    </p>
+
+    <div class="profile-title-bar">
+        Perfil del Aprendiz
+    </div>
+
+    <div class="profile-card-sena">
+        
+        <div class="profile-sidebar">
+            <div class="profile-avatar">
+                {{ aprendices.firstname.0 }}{{ aprendices.lastname.0 }}
+            </div>
+            <h3 class="profile-name">
+                {{ aprendices.firstname }} <br> {{ aprendices.lastname }}
+            </h3>
+        </div>
+        
+        <div class="profile-info-content">
+
+            <div class="info-panel">
+                <h4>Información Personal</h4>
+                <div class="info-group">
+                    <span class="info-label">Documento identidad:</span>
+                    <span class="info-value">{{ aprendices.cedula }}</span>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Nombre:</span>
+                    <span class="info-value">{{ aprendices.firstname }}</span>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Apellido:</span>
+                    <span class="info-value">{{ aprendices.lastname }}</span>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Fecha Nacimiento:</span>
+                    <span class="info-value">{{ aprendices.date_of_birth|date:"d/m/Y" }}</span>
+                </div>
+                {# No hay campo 'Programa' aquí, lo cual coincide con la imagen #}
+            </div>
+
+            <div class="info-panel">
+                <h4>Información de Contacto</h4>
+                <div class="info-group">
+                    <span class="info-label">Correo:</span>
+                    <span class="info-value-link"><a href="mailto:{{ aprendices.email }}">{{ aprendices.email }}</a></span>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Teléfono:</span>
+                    <span class="info-value">{{ aprendices.phone }}</span>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Ciudad:</span>
+                    <span class="info-value">{{ aprendices.city }}</span>
+                </div>
+            </div>
+
+            <div class="details-actions">
+                <a href="editar/{{ aprendices.id }}" class="btn-edit-profile">Editar Perfil</a>
+            </div>
+
+        </div>
+    </div>
+    
+    <div class="details-actions-bottom">
+        <a href="/aprendices/" class="btn-back">← Volver a la Lista</a>
+    </div>
+
+</div>
+{% endblock %}

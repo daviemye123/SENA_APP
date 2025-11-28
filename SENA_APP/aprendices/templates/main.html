@@ -1,0 +1,59 @@
+{% extends "master.html" %}
+{% load static %}  {% block title %}SENA APP{% endblock %}
+
+{% block content %}
+<div class="hero-container">
+    <div class="hero-content">
+        <h1>Bienvenido a SENA APP</h1>
+        <p class="subtitle">Sistema de Gestión de Aprendices del Servicio Nacional de Aprendizaje</p>
+        <p class="description">
+            Administra y consulta la información de los aprendices e instructores de manera eficiente.
+        </p>
+
+        <div class="action-buttons">
+            <a href="/aprendices/" class="btn-main">Ver Aprendices</a>
+            <a href="/instructores/" class="btn-main">Ver Instructores</a>
+            <a href="/programas/" class="btn-main">Ver Programas</a>
+            <a href="/cursos/" class="btn-main">Ver Cursos</a>
+        </div>
+    </div>
+</div>
+
+<div class="cards-container">
+
+    <div class="card">
+        <h3>Lista de Aprendices</h3>
+        <p>Consulta todos los aprendices registrados en el sistema.</p>
+        <p><strong>Total de Aprendices:</strong> {{ total_aprendices }}</p>
+        <a href="/aprendices/" class="btn-card">Ver Lista</a>
+    </div>
+
+    <div class="card">
+        <h3>Lista de Instructores</h3>
+        <p>Consulta todos los instructores registrados en el sistema.</p>
+        <p><strong>Total de Instructores:</strong> {{ total_instructores }}</p>
+        <a href="/instructores/" class="btn-card">Ver Lista</a>
+    </div>
+
+    <div class="card">
+        <h3>Lista de Programas</h3>
+        <p>Consulta todos los programas registrados en el sistema.</p>
+        <p><strong>Total de Programas:</strong> {{ total_programas }}</p>
+        <a href="/programas/" class="btn-card">Ver Lista</a>
+    </div>
+
+    <div class="card">
+        <h3>Lista de Cursos</h3>
+        <p>Consulta todos los cursos registrados en el sistema.</p>
+        <p><strong>Cursos Activos:</strong> {{ total_cursos }}</p>
+        <a href="/cursos/" class="btn-card">Ver Lista</a>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'main.css' %}"> 
+
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+{% endblock %}

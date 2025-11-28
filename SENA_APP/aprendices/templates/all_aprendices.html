@@ -1,0 +1,82 @@
+{% extends "master.html" %}
+{% load static %}
+
+
+{% block title %}
+    Lista de Aprendices SENA
+{% endblock %}
+
+{% block content %}
+
+<div class="list-container">
+    
+    <div class="list-header-row">
+        <h1 class="list-title">Lista de Aprendices SENA</h1>
+
+        <div class="list-actions">
+            <span class="total-badge">
+                Total: {{ total_aprendices|default:"0" }} aprendices
+            </span>
+
+            <a href="/nuevo_aprendiz/" class="btn-new-aprendiz">
+                Nuevo Aprendiz
+            </a>
+        </div>
+    </div>
+
+    <table class="sena-table">
+        <thead>
+            <tr>
+                <th>Documento</th>
+                <th>Nombre Completo</th> {# Cambiado a Nombre Completo #}
+                <th>Correo</th>
+                <th>Teléfono</th>
+                <th>Ciudad</th>
+                <th>Programa</th> {# Añadida columna Programa #}
+                <th>Fecha Nacimiento</th>
+                <th class="actions-col">Acciones</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for aprendiz in aprendices %}
+            <tr>
+                <td><a href="/aprendices/{{ aprendiz.id }}/">{{ aprendiz.cedula }}</a></td> {# Enlace al documento #}
+
+                <td>{{ aprendiz.firstname }} {{ aprendiz.lastname }}</td> 
+
+                <td>
+                    <a href="mailto:{{ aprendiz.email }}">
+                        {{ aprendiz.email }}
+                    </a>
+                </td>
+
+                <td>{{ aprendiz.phone }}</td>
+                <td>{{ aprendiz.city }}</td>
+                <td>{{ aprendiz.programa }}</td> {# Asumo que tienes un campo 'programa' #}
+
+                <td>{{ aprendiz.date_of_birth|date:"d/m/Y" }}</td>
+
+                <td class="actions-col">
+                    <a href="/aprendices/{{ aprendiz.id }}/" class="btn-action btn-view">Ver</a>
+                </td>
+            </tr>
+
+            {% empty %}
+            <tr>
+                <td colspan="8" style="text-align: center;">
+                    No hay aprendices registrados.
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'all.css' %}">
+<link rel="stylesheet" href="{% static 'main.css' %}"> 
+{% endblock %}

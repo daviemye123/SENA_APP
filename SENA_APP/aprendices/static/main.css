@@ -1,0 +1,123 @@
+.hero-container {
+    background: linear-gradient(135deg, #199f3a, #0e6b24);
+    color: white;
+    padding: 60px 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 1200px;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.subtitle {
+    font-size: 18px;
+    opacity: 0.9;
+}
+
+.description {
+    margin-top: 10px;
+    font-size: 16px;
+    opacity: 0.9;
+}
+
+.action-buttons {
+    margin-top: 25px;
+}
+
+.btn-main {
+    background: white;
+    color: #199f3a;
+    padding: 12px 30px;
+    margin: 8px;
+    border-radius: 5px;
+    display: inline-block;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn-main:hover {
+    transform: translateY(-2px);
+    background: #e4ffe9;
+}
+
+/* ===== CARDS SECTION ===== */
+
+.cards-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 7px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+    color: #199f3a;
+    margin-bottom: 10px;
+}
+
+.card p {
+    margin-bottom: 10px;
+    color: #444;
+}
+
+.btn-card {
+    display: inline-block;
+    background: #199f3a;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn-card:hover {
+    background: #0e6b24;
+}
+/* Estilos para el contenedor de la cabecera */
+.sena-header {
+    background-color: #008744; /* Color verde SENA */
+    padding: 10px 20px;
+    color: white;
+}
+
+.sena-header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 🎯 Regla para REDUCIR el tamaño del logo */
+.sena-logo-img {
+    width: 40px; /* Tamaño más pequeño que el original */
+    height: auto;
+    margin-right: 10px; /* Separación con el texto "SENA APP" */
+    vertical-align: middle; /* Alinea con el texto */
+}
+
+.sena-logo-container {
+    display: flex;
+    align-items: center;
+    font-size: 1.5em; /* Tamaño del texto del logo */
+    font-weight: bold;
+}
+
+.sena-nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+}
