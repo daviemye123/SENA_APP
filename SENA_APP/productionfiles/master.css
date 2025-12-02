@@ -1,263 +1,252 @@
+/* ===== ESTILO MANGA/ANIME ===== */
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+.hero-container {
+    background: linear-gradient(135deg, #199f3a, #0e6b24);
+    color: white;
+    padding: 60px 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 1200px;
+    text-align: center;
+    /* Borde tipo manga */
+    border: 5px solid #000;
+    box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.8);
+    position: relative;
+}
 
-        body {
-            font-family: 'Roboto', sans-serif;
-            background: #f5f5f5;
-            color: #333;
-        }
+/* Efecto de líneas de velocidad manga */
+.hero-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 10px,
+            rgba(255, 255, 255, 0.03) 10px,
+            rgba(255, 255, 255, 0.03) 20px
+        );
+    pointer-events: none;
+    border-radius: 5px;
+}
 
-        /* Header SENA */
-        .sena-header {
-            background: linear-gradient(135deg, #39A900 0%, #2d8700 100%);
-            color: white;
-            padding: 15px 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
+.hero-content h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-shadow: 
+        3px 3px 0 #000,
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        4px 4px 8px rgba(0, 0, 0, 0.5);
+    letter-spacing: 2px;
+}
 
-        .sena-header-content {
-            max-width: 1600px;
-            margin: 0 auto;
-            padding: 0 30px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+.subtitle {
+    font-size: 18px;
+    text-shadow: 
+        2px 2px 0 #000,
+        -1px -1px 0 #000;
+}
 
-        .sena-logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+.description {
+    margin-top: 10px;
+    font-size: 16px;
+    text-shadow: 1px 1px 0 #000;
+}
 
-        .sena-logo img {
-            height: 40px;
-            width: auto;
-        }
+.action-buttons {
+    margin-top: 25px;
+}
 
-        .sena-nav {
-            display: flex;
-            gap: 15px;
-        }
+.btn-main {
+    background: white;
+    color: #199f3a;
+    padding: 12px 30px;
+    margin: 8px;
+    border-radius: 5px;
+    display: inline-block;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
+    /* Borde negro tipo manga */
+    border: 4px solid #000;
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.8);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
 
-        .sena-nav a {
-            color: white;
-            text-decoration: none;
-            padding: 8px 15px;
-            border-radius: 4px;
-            transition: background 0.3s;
-            font-size: 0.9rem;
-        }
+.btn-main:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.8);
+    background: #e4ffe9;
+}
 
-        .sena-nav a:hover {
-            background: rgba(255,255,255,0.2);
-        }
+/* ===== CARDS SECTION ESTILO MANGA ===== */
 
-        /* Main Container */
-        .container {
-            max-width: 1600px;
-            margin: 0 auto;
-            padding: 30px;
-            background: white;
-        }
+.cards-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+}
 
-        /* Header Section */
-        .page-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid #e9ecef;
-        }
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 7px;
+    /* Borde negro grueso tipo manga */
+    border: 4px solid #000;
+    box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.8);
+    position: relative;
+    transition: 0.3s;
+}
 
-        .page-header h1 {
-            font-size: 2rem;
-            font-weight: 400;
-            color: #2d3436;
-        }
+/* Efecto de líneas de fondo manga en las tarjetas */
+.card::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 30px;
+    height: 30px;
+    background: 
+        linear-gradient(45deg, transparent 48%, #000 48%, #000 52%, transparent 52%),
+        linear-gradient(-45deg, transparent 48%, #000 48%, #000 52%, transparent 52%);
+    opacity: 0.1;
+}
 
-        .header-actions {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
+.card:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 9px 9px 0px rgba(0, 0, 0, 0.8);
+}
 
-        .badge {
-            background: #00bcd4;
-            color: white;
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
+.card h3 {
+    color: #199f3a;
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 0 rgba(25, 159, 58, 0.2);
+}
 
-        .btn {
-            padding: 10px 25px;
-            border: none;
-            border-radius: 6px;
-            font-size: 0.95rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
+.card p {
+    margin-bottom: 10px;
+    color: #444;
+    font-weight: 500;
+}
 
-        .btn-success {
-            background: #39A900;
-            color: white;
-        }
+.card p strong {
+    color: #000;
+    font-weight: 900;
+}
 
-        .btn-success:hover {
-            background: #2d8700;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(57, 169, 0, 0.3);
-        }
+.btn-card {
+    display: inline-block;
+    background: #199f3a;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 0.3s;
+    /* Borde negro tipo manga */
+    border: 3px solid #000;
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.8);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
 
-        .btn-primary {
-            background: transparent;
-            color: #0066cc;
-            border: 1px solid #0066cc;
-            padding: 6px 15px;
-            font-size: 0.85rem;
-        }
+.btn-card:hover {
+    background: #0e6b24;
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.8);
+}
 
-        .btn-primary:hover {
-            background: #0066cc;
-            color: white;
-        }
+/* ===== HEADER ESTILO MANGA ===== */
 
-        /* Table Styles */
-        .table-container {
-            overflow-x: auto;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
+.sena-header {
+    background-color: #008744;
+    padding: 10px 20px;
+    color: white;
+    border-bottom: 5px solid #000;
+    box-shadow: 0 5px 0px rgba(0, 0, 0, 0.5);
+}
 
-        .aprendices-table {
-            width: 100%;
-            border-collapse: collapse;
-            background: white;
-        }
+.sena-header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-        .aprendices-table thead {
-            background: #2d3436;
-            color: white;
-        }
+.sena-logo-img {
+    width: 40px;
+    height: auto;
+    margin-right: 10px;
+    vertical-align: middle;
+    border: 3px solid #000;
+    border-radius: 50%;
+    background: white;
+    padding: 2px;
+}
 
-        .aprendices-table thead th {
-            padding: 15px;
-            text-align: left;
-            font-weight: 500;
-            font-size: 0.9rem;
-            white-space: nowrap;
-        }
+.sena-logo-container {
+    display: flex;
+    align-items: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-shadow: 
+        2px 2px 0 #000,
+        -1px -1px 0 #000;
+    letter-spacing: 2px;
+}
 
-        .aprendices-table tbody tr {
-            border-bottom: 1px solid #e9ecef;
-            transition: background 0.2s;
-        }
+.sena-nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 #000;
+    padding: 5px 10px;
+    border: 2px solid transparent;
+    transition: 0.3s;
+}
 
-        .aprendices-table tbody tr:nth-child(even) {
-            background: #f8f9fa;
-        }
+.sena-nav a:hover {
+    border: 2px solid #000;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+}
 
-        .aprendices-table tbody tr:hover {
-            background: #e3f2fd;
-        }
+/* ===== EFECTOS ADICIONALES MANGA ===== */
 
-        .aprendices-table td {
-            padding: 12px 15px;
-            font-size: 0.9rem;
-        }
+/* Líneas de énfasis en el body */
+body {
+    background: #f5f5f5;
+    background-image: 
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(0, 0, 0, 0.02) 2px,
+            rgba(0, 0, 0, 0.02) 4px
+        );
+}
 
-        .aprendices-table td a {
-            color: #0066cc;
-            text-decoration: none;
-        }
+/* Efecto de explosión en hover de títulos */
+@keyframes manga-pop {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
 
-        .aprendices-table td a:hover {
-            text-decoration: underline;
-        }
-
-        /* Empty State */
-        .empty-state {
-            text-align: center;
-            padding: 60px 20px;
-            color: #666;
-        }
-
-        .empty-state svg {
-            width: 100px;
-            height: 100px;
-            margin-bottom: 20px;
-            opacity: 0.3;
-        }
-
-        .empty-state h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: #2d3436;
-        }
-
-        .empty-state p {
-            font-size: 1rem;
-            margin-bottom: 20px;
-        }
-
-        /* Footer */
-        .sena-footer {
-            background: #2d3436;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            margin-top: 40px;
-        }
-
-        .sena-footer p {
-            font-size: 0.85rem;
-            opacity: 0.9;
-            margin: 3px 0;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .container {
-                padding: 15px;
-            }
-
-            .page-header {
-                flex-direction: column;
-                gap: 15px;
-                align-items: flex-start;
-            }
-
-            .header-actions {
-                width: 100%;
-                flex-direction: column;
-            }
-
-            .btn {
-                width: 100%;
-            }
-
-            .aprendices-table {
-                font-size: 0.8rem;
-            }
-
-            .aprendices-table th,
-            .aprendices-table td {
-                padding: 8px;
-            }
-
-            .sena-nav {
-                display: none;
-            }
-        }
+.card:hover h3 {
+    animation: manga-pop 0.4s ease;
+}

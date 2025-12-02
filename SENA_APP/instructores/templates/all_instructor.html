@@ -1,0 +1,94 @@
+{% extends "master.html" %}
+{% load static %}
+
+{% block title %}
+    Lista de Instructores SENA
+{% endblock %}
+
+{% block content %}
+
+<div class="list-container">
+    
+    <div class="list-header-row">
+        <h1 class="list-title">Lista de Instructores SENA</h1>
+
+        <div class="list-actions">
+            <span class="total-badge">
+                Total: {{ total_instructores|default:"0" }} instructores
+            </span>
+
+            <a href="/nuevo_instructor/" class="btn-new-aprendiz">
+                Nuevo Instructor
+            </a>
+        </div>
+    </div>
+
+    <table class="sena-table">
+        <thead>
+            <tr>
+                <th>Tipo Doc</th>
+                <th>Documento</th>
+                <th>Nombre Completo</th>
+                <th>Especialidad</th>
+                <th>Correo</th>
+                <th>Teléfono</th>
+                <th>Programa</th>
+                <th>Nivel Formación</th>
+                <th>Estado</th>
+                <th class="actions-col">Acciones</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for instructor in instructores %}
+            <tr>
+                <td>{{ instructor.tipo_doc }}</td>
+                <td><a href="/instructores/{{ instructor.id }}/">{{ instructor.documento }}</a></td>
+                <td>{{ instructor.nombre }}</td>
+                <td>{{ instructor.especialidad }}</td>
+                
+                <td>
+                    {% if instructor.correo %}
+                    <a href="mailto:{{ instructor.correo }}">
+                        {{ instructor.correo }}
+                    </a>
+                    {% else %}
+                    -
+                    {% endif %}
+                </td>
+
+                <td>{{ instructor.telefono|default:"-" }}</td>
+                <td>{{ instructor.programa|default:"-" }}</td>
+                <td>{{ instructor.get_nivel_formacion_display }}</td>
+                
+                <td>
+                    {% if instructor.activo %}
+                    <span style="color: green; font-weight: bold;">✓ Activo</span>
+                    {% else %}
+                    <span style="color: red;">✗ Inactivo</span>
+                    {% endif %}
+                </td>
+
+                <td class="actions-col">
+                    <a href="/instructores/{{ instructor.id }}/" class="btn-action btn-view">Ver</a>
+                </td>
+            </tr>
+
+            {% empty %}
+            <tr>
+                <td colspan="10" style="text-align: center;">
+                    No hay instructores registrados.
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'all.css' %}">
+<link rel="stylesheet" href="{% static 'main.css' %}"> 
+{% endblock %}

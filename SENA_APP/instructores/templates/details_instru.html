@@ -1,0 +1,128 @@
+{% extends "master.html" %}
+{% load static %}
+
+{% block title %}
+    Detalles de Instructor: {{ instructor.nombre }}
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'details.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="details-container">
+    
+    <p class="breadcrumb">
+        <a href="/">Inicio</a> / 
+        <a href="/instructores/">Lista Instructores</a> / 
+        {{ instructor.nombre }}
+    </p>
+
+    <div class="profile-title-bar">
+        Perfil del Instructor
+    </div>
+
+    <div class="profile-card-sena">
+        
+        <div class="profile-sidebar">
+            <div class="profile-avatar">
+                {{ instructor.nombre.0 }}{{ instructor.nombre.1|default:"I" }}
+            </div>
+            <h3 class="profile-name">
+                {{ instructor.nombre }}
+            </h3>
+            <p style="text-align: center; color: #666; margin-top: 10px;">
+                {{ instructor.especialidad }}
+            </p>
+            <p style="text-align: center; margin-top: 5px;">
+                {% if instructor.activo %}
+                <span style="color: green; font-weight: bold;">✓ Activo</span>
+                {% else %}
+                <span style="color: red;">✗ Inactivo</span>
+                {% endif %}
+            </p>
+        </div>
+        
+        <div class="profile-info-content">
+
+            <div class="info-panel">
+                <h4>Información Personal</h4>
+                <div class="info-group">
+                    <span class="info-label">Tipo de Documento:</span>
+                    <span class="info-value">{{ instructor.get_tipo_doc_display }}</span>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Número de Documento:</span>
+                    <span class="info-value">{{ instructor.documento }}</span>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Nombre Completo:</span>
+                    <span class="info-value">{{ instructor.nombre }}</span>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Fecha Nacimiento:</span>
+                    <span class="info-value">{{ instructor.fecha_nacimiento|date:"d/m/Y" }}</span>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Ciudad:</span>
+                    <span class="info-value">{{ instructor.ciudad }}</span>
+                </div>
+            </div>
+
+            <div class="info-panel">
+                <h4>Información de Contacto</h4>
+                <div class="info-group">
+                    <span class="info-label">Correo:</span>
+                    {% if instructor.correo %}
+                    <span class="info-value-link"><a href="mailto:{{ instructor.correo }}">{{ instructor.correo }}</a></span>
+                    {% else %}
+                    <span class="info-value">No registrado</span>
+                    {% endif %}
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Teléfono:</span>
+                    <span class="info-value">{{ instructor.telefono|default:"No registrado" }}</span>
+                </div>
+            </div>
+
+            <div class="info-panel">
+                <h4>Información Académica y Laboral</h4>
+                <div class="info-group">
+                    <span class="info-label">Especialidad:</span>
+                    <span class="info-value">{{ instructor.especialidad }}</span>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Nivel de Formación:</span>
+                    <span class="info-value">{{ instructor.get_nivel_formacion_display }}</span>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Años de Experiencia:</span>
+                    <span class="info-value">{{ instructor.experiencia }} años</span>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Programa Asignado:</span>
+                    <span class="info-value">{{ instructor.programa|default:"Sin programa asignado" }}</span>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Fecha de Vinculación:</span>
+                    <span class="info-value">{{ instructor.fecha_vinculacion|date:"d/m/Y" }}</span>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Fecha de Registro:</span>
+                    <span class="info-value">{{ instructor.fecha_registro|date:"d/m/Y H:i" }}</span>
+                </div>
+            </div>
+
+            <div class="details-actions">
+                <a href="/instructores/editar/{{ instructor.id }}" class="btn-edit-profile">Editar Perfil</a>
+            </div>
+
+        </div>
+    </div>
+    
+    <div class="details-actions-bottom">
+        <a href="/instructores/" class="btn-back">← Volver a la Lista</a>
+    </div>
+
+</div>
+{% endblock %}
