@@ -1,0 +1,94 @@
+{% extends "master.html" %}
+{% load static %}
+
+{% block title %}
+    Lista de Programas SENA
+{% endblock %}
+
+{% block content %}
+
+<div class="list-container">
+    
+    <div class="list-header-row">
+        <h1 class="list-title">Lista de Programas de Formación</h1>
+
+        <div class="list-actions">
+            <span class="total-badge">
+                Total: {{ total_programas|default:"0" }} programas
+            </span>
+
+            <a href="{% url 'crear_programa' %}" class="btn-new-aprendiz">
+                Nuevo Programa
+            </a>
+        </div>
+    </div>
+
+    <table class="sena-table">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Nombre del Programa</th>
+                <th>Nivel</th>
+                <th>Modalidad</th>
+                <th>Duración (Meses)</th>
+                <th>Centro / Regional</th>
+                <th>Fecha Creación</th>
+                <th>Estado</th>
+                <th class="actions-col">Acciones</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for programa in programas %}
+            <tr>
+                <td>{{ programa.codigo }}</td>
+                <td><a href="{% url 'detalle_programa' programa.id %}">{{ programa.nombre }}</a></td>
+                
+                {# Usando get_FOO_display para mostrar la etiqueta legible del choice #}
+                <td>{{ programa.get_nivel_formacion_display }}</td>
+                <td>{{ programa.get_modalidad_display }}</td>
+                
+                <td>{{ programa.duracion_meses }} meses</td>
+                
+                <td>{{ programa.centro_formacion }} ({{ programa.regional }})</td>
+                
+                {# Formateo de fecha simple, ajusta según necesidad #}
+                <td>{{ programa.fecha_creacion|date:"Y-m-d" }}</td>
+                
+                <td>
+                    {# Lógica de estilo para el campo Estado usando get_estado_display #}
+                    {% with estado_codigo=programa.estado|upper %}
+                        {% if estado_codigo == 'ACT' %}
+                            <span class="status-badge status-active">✓ Activo</span>
+                        {% elif estado_codigo == 'INA' %}
+                            <span class="status-badge status-inactive">✗ Inactivo</span>
+                        {% else %}
+                            <span class="status-badge status-other">{{ programa.get_estado_display }}</span>
+                        {% endif %}
+                    {% endwith %}
+                </td>
+
+                <td class="actions-col">
+                    <a href="{% url 'detalle_programa' programa.id %}" class="btn-action btn-view">Ver</a>
+                    <a href="{% url 'editar_programa' programa.id %}" class="btn-action btn-edit">Editar</a>
+                </td>
+            </tr>
+
+            {% empty %}
+            <tr>
+                <td colspan="9" style="text-align: center;">
+                    No hay programas de formación registrados.
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'all.css' %}">
+<link rel="stylesheet" href="{% static 'main.css' %}"> 
+{% endblock %}

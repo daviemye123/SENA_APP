@@ -1,0 +1,137 @@
+/* ============================================== */
+/* ESTILOS DE LA LISTA DE APRENDICES (IMAGEN 2) */
+/* ============================================== */
+
+/* Contenedor principal de la lista */
+.list-container {
+    max-width: 1200px;
+    margin: 30px auto; /* Centra el contenido y le da espacio */
+    padding: 0 20px;
+}
+
+/* Fila de Título y Acciones */
+.list-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end; /* Alinea los elementos a la parte inferior */
+    margin-bottom: 25px;
+}
+
+.list-title {
+    color: #333;
+    font-size: 2.2em; /* Tamaño de título más grande */
+    font-weight: bold;
+    margin: 0;
+}
+
+.list-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Espacio entre los elementos */
+}
+
+/* Badge del Total de Aprendices */
+.total-badge {
+    background-color: #00bcd4; /* Azul Cian */
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 1em;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Botón "Nuevo Aprendiz" */
+.btn-new-aprendiz {
+    background-color: #4CAF50; /* Verde más brillante */
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.btn-new-aprendiz:hover {
+    background-color: #45a049;
+}
+
+/* ============================================== */
+/* ESTILOS DE LA TABLA DE DATOS */
+/* ============================================== */
+
+.sena-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.08); /* Sombra más pronunciada */
+    border-radius: 8px;
+    overflow: hidden; /* Para que la sombra y el borde redondeado funcionen bien */
+}
+
+/* Encabezados de la tabla (fila oscura) */
+.sena-table thead tr {
+    background-color: #343a40; /* Gris oscuro para el encabezado */
+    color: white;
+    text-align: left;
+    height: 48px; /* Altura de fila de encabezado */
+    font-weight: normal; /* Asegura que no sea demasiado negrita */
+    font-size: 0.95em;
+}
+
+.sena-table th {
+    padding: 12px 18px;
+    white-space: nowrap; /* Evita que el texto del encabezado se rompa */
+}
+
+/* Celdas de datos */
+.sena-table td {
+    padding: 12px 18px;
+    font-size: 0.9em;
+    color: #444;
+    border-bottom: 1px solid #e9ecef; /* Separación sutil entre filas */
+}
+
+/* Fondo de filas alternas */
+.sena-table tbody tr:nth-of-type(even) {
+    background-color: #f8f9fa; /* Gris muy claro para filas pares */
+}
+
+/* Última fila sin borde inferior */
+.sena-table tbody tr:last-of-type td {
+    border-bottom: none;
+}
+
+/* Estilos para enlaces dentro de la tabla (Documento, Correo) */
+.sena-table td a {
+    color: #007bff; /* Azul vibrante */
+    text-decoration: none;
+}
+
+.sena-table td a:hover {
+    text-decoration: underline;
+}
+
+/* Columna de Acciones */
+.sena-table .actions-col {
+    text-align: center;
+    width: 100px; /* Ancho ajustado para un solo botón */
+}
+
+/* Botón "Ver" dentro de la tabla */
+.btn-action.btn-view {
+    background-color: #17a2b8; /* Azul teal/info */
+    color: white;
+    padding: 6px 12px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 0.85em;
+    transition: background-color 0.3s ease;
+}
+
+.btn-action.btn-view:hover {
+    background-color: #138496;
+}

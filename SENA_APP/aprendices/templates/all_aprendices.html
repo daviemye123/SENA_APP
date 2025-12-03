@@ -41,7 +41,7 @@
         <tbody>
             {% for aprendiz in aprendices %}
             <tr>
-                <td><a href="/aprendices/{{ aprendiz.id }}/">{{ aprendiz.cedula }}</a></td> {# Enlace al documento #}
+                <td><a href="{% url 'aprendices:details' aprendiz.id %}">{{ aprendiz.cedula }}</a></td> {# Enlace al documento #}
 
                 <td>{{ aprendiz.firstname }} {{ aprendiz.lastname }}</td> 
 
@@ -58,7 +58,7 @@
                 <td>{{ aprendiz.date_of_birth|date:"d/m/Y" }}</td>
 
                 <td class="actions-col">
-                    <a href="/aprendices/{{ aprendiz.id }}/" class="btn-action btn-view">Ver</a>
+                    <a href="{% url 'aprendices:details' aprendiz.id %}" class="btn-action btn-view">Ver</a>
                 </td>
             </tr>
 

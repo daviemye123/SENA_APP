@@ -1,0 +1,129 @@
+{% extends "master.html" %}
+{% load static %}
+
+{% block title %}
+    Detalles del Programa: {{ programa.nombre }}
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'details.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="details-container">
+    
+    <p class="breadcrumb">
+        <a href="/">Inicio</a> / 
+        {# CORRECCIÓN: Enlace a la lista de Programas #}
+        <a href="{% url 'lista_programas' %}">Lista Programas</a> / 
+        {{ programa.nombre }}
+    </p>
+
+    <div class="profile-title-bar">
+        {# CORRECCIÓN: Título del perfil #}
+        Detalles del Programa de Formación
+    </div>
+
+    <div class="profile-card-sena">
+        
+        <div class="profile-sidebar">
+            {# CORRECCIÓN: Mostrar el código del programa como elemento principal en el sidebar #}
+            <div class="profile-avatar" style="background-color: #0076a3; font-size: 2.5em; line-height: 80px;">
+                {{ programa.codigo|slice:":3"|upper }} 
+            </div>
+            <h3 class="profile-name">
+                {{ programa.nombre }}
+            </h3>
+            <p style="text-align: center; color: #666; margin-top: 10px;">
+                Código: **{{ programa.codigo }}**
+            </p>
+            <p style="text-align: center; margin-top: 5px;">
+                {# CORRECCIÓN: Mostrar el estado del programa #}
+                {% with estado_codigo=programa.estado|upper %}
+                    {% if estado_codigo == 'ACT' %}
+                        <span style="color: green; font-weight: bold;">✓ Activo</span>
+                    {% elif estado_codigo == 'INA' %}
+                        <span style="color: red;">✗ Inactivo</span>
+                    {% else %}
+                        <span style="color: orange; font-weight: bold;">{{ programa.get_estado_display }}</span>
+                    {% endif %}
+                {% endwith %}
+            </p>
+        </div>
+        
+        <div class="profile-info-content">
+
+            <div class="info-panel">
+                <h4>Información General</h4>
+                {# MOSTRANDO CAMPOS PRINCIPALES DEL MODELO PROGRAMA #}
+                <div class="info-group">
+                    <span class="info-label">Nivel de Formación:</span>
+                    <span class="info-value">{{ programa.get_nivel_formacion_display }}</span>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Modalidad:</span>
+                    <span class="info-value">{{ programa.get_modalidad_display }}</span>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Duración Total:</span>
+                    <span class="info-value">**{{ programa.duracion_meses }}** meses / **{{ programa.duracion_horas }}** horas</span>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Centro de Formación:</span>
+                    <span class="info-value">{{ programa.centro_formacion }}</span>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Regional:</span>
+                    <span class="info-value">{{ programa.regional }}</span>
+                </div>
+            </div>
+
+            <div class="info-panel">
+                <h4>Descripción y Requisitos</h4>
+                <div class="info-group info-group-block">
+                    <span class="info-label">Descripción:</span>
+                    <p class="info-text">{{ programa.descripcion|linebreaksbr|default:"No hay descripción." }}</p>
+                </div>
+                <div class="info-group info-group-block">
+                    <span class="info-label">Requisitos de Ingreso:</span>
+                    <p class="info-text">{{ programa.requisitos_ingreso|linebreaksbr|default:"No se especifican requisitos." }}</p>
+                </div>
+            </div>
+
+            <div class="info-panel">
+                <h4>Competencias y Perfil</h4>
+                <div class="info-group info-group-block">
+                    <span class="info-label">Competencias a Desarrollar:</span>
+                    <p class="info-text">{{ programa.competencias|linebreaksbr|default:"No se listan competencias." }}</p>
+                </div>
+                <div class="info-group info-group-block">
+                    <span class="info-label">Perfil de Egreso:</span>
+                    <p class="info-text">{{ programa.perfil_egreso|linebreaksbr|default:"No se especifica perfil de egreso." }}</p>
+                </div>
+            </div>
+            
+            <div class="info-panel">
+                <h4>Información de Registro</h4>
+                <div class="info-group">
+                    <span class="info-label">Fecha de Creación del Programa:</span>
+                    <span class="info-value">{{ programa.fecha_creacion|date:"d/m/Y" }}</span>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Fecha de Registro en el Sistema:</span>
+                    <span class="info-value">{{ programa.fecha_registro|date:"d/m/Y H:i:s" }}</span>
+                </div>
+            </div>
+
+            <div class="details-actions">
+                <a href="{% url 'editar_programa' programa.id %}" class="btn-edit-profile">Editar Programa</a>
+            </div>
+
+        </div>
+    </div>
+    
+    <div class="details-actions-bottom">
+        <a href="{% url 'lista_programas' %}" class="btn-back">← Volver a la Lista de Programas</a>
+    </div>
+
+</div>
+{% endblock %}

@@ -17,9 +17,7 @@
                 Total: {{ total_instructores|default:"0" }} instructores
             </span>
 
-            <a href="/nuevo_instructor/" class="btn-new-aprendiz">
-                Nuevo Instructor
-            </a>
+            {# ¡ENLACE ELIMINADO! La acción "Nuevo Instructor" ya no está aquí. #}
         </div>
     </div>
 
@@ -42,8 +40,11 @@
         <tbody>
             {% for instructor in instructores %}
             <tr>
-                <td>{{ instructor.tipo_doc }}</td>
-                <td><a href="/instructores/{{ instructor.id }}/">{{ instructor.documento }}</a></td>
+                <td>{{ instructor.get_tipo_doc_display }}</td> 
+                
+                {# Enlace al detalle #}
+                <td><a href="{% url 'instructores:instructor_detail' instructor.id %}">{{ instructor.documento }}</a></td>
+                
                 <td>{{ instructor.nombre }}</td>
                 <td>{{ instructor.especialidad }}</td>
                 
@@ -58,7 +59,7 @@
                 </td>
 
                 <td>{{ instructor.telefono|default:"-" }}</td>
-                <td>{{ instructor.programa|default:"-" }}</td>
+                <td>{{ instructor.programa.nombre|default:"-" }}</td> 
                 <td>{{ instructor.get_nivel_formacion_display }}</td>
                 
                 <td>
@@ -70,7 +71,7 @@
                 </td>
 
                 <td class="actions-col">
-                    <a href="/instructores/{{ instructor.id }}/" class="btn-action btn-view">Ver</a>
+                    <a href="{% url 'instructores:instructor_detail' instructor.id %}" class="btn-action btn-view">Ver</a>
                 </td>
             </tr>
 
@@ -89,6 +90,5 @@
 {% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'all.css' %}">
-<link rel="stylesheet" href="{% static 'main.css' %}"> 
+<link rel="stylesheet" href="{% static 'all_instrucot.css' %}">
 {% endblock %}
