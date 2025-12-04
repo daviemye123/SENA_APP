@@ -1,0 +1,158 @@
+{% extends "master.html" %}
+{% load static %}
+
+{% block title %}
+    Detalles del Curso: {{ curso.nombre }}
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'details.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="details-container">
+    
+    <p class="breadcrumb">
+        <a href="/">Inicio</a> / 
+        <a href="/cursos/">Lista Cursos</a> / 
+        {{ curso.nombre }}
+    </p>
+
+    <div class="profile-title-bar">
+        Detalles del Curso
+    </div>
+
+    <div class="profile-card-sena">
+        
+        <div class="profile-sidebar">
+            <div class="profile-avatar">
+                {{ curso.codigo.0 }}{{ curso.codigo.1|default:"C" }}
+            </div>
+            <h3 class="profile-name">
+                {{ curso.nombre }}
+            </h3>
+            <p style="text-align: center; color: #666; margin-top: 10px;">
+                {{ curso.codigo }}
+            </p>
+            <p style="text-align: center; margin-top: 5px;">
+                {% if curso.estado == 'PRO' %}
+                <span style="color: blue; font-weight: bold;">📋 Programado</span>
+                {% elif curso.estado == 'INI' %}
+                <span style="color: orange; font-weight: bold;">▶ Iniciado</span>
+                {% elif curso.estado == 'EJE' %}
+                <span style="color: green; font-weight: bold;">✓ En Ejecución</span>
+                {% elif curso.estado == 'FIN' %}
+                <span style="color: gray; font-weight: bold;">✓ Finalizado</span>
+                {% elif curso.estado == 'CAN' %}
+                <span style="color: red; font-weight: bold;">✗ Cancelado</span>
+                {% elif curso.estado == 'SUS' %}
+                <span style="color: purple; font-weight: bold;">⏸ Suspendido</span>
+                {% endif %}
+            </p>
+        </div>
+        
+        <div class="profile-info-content">
+
+            <div class="info-panel">
+                <h4>Información General</h4>
+                <div class="info-group">
+                    <span class="info-label">Código del Curso:</span>
+                    <span class="info-value">{{ curso.codigo }}</span>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Nombre:</span>
+                    <span class="info-value">{{ curso.nombre }}</span>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Programa de Formación:</span>
+                    <span class="info-value">{{ curso.programa.nombre|default:"No asignado" }}</span>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Estado:</span>
+                    <span class="info-value">
+                        {% if curso.estado == 'PRO' %}
+                        Programado
+                        {% elif curso.estado == 'INI' %}
+                        Iniciado
+                        {% elif curso.estado == 'EJE' %}
+                        En Ejecución
+                        {% elif curso.estado == 'FIN' %}
+                        Finalizado
+                        {% elif curso.estado == 'CAN' %}
+                        Cancelado
+                        {% elif curso.estado == 'SUS' %}
+                        Suspendido
+                        {% endif %}
+                    </span>
+                </div>
+            </div>
+
+            <div class="info-panel">
+                <h4>Información Académica</h4>
+                <div class="info-group">
+                    <span class="info-label">Instructor Coordinador:</span>
+                    <span class="info-value">{{ curso.instructor_coordinador.nombre|default:"No asignado" }}</span>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Cupos Máximos:</span>
+                    <span class="info-value">{{ curso.cupos_maximos }}</span>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Aprendices Inscritos:</span>
+                    <span class="info-value">{{ curso.aprendices.count }}</span>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Cupos Disponibles:</span>
+                    <span class="info-value">{{ curso.cupos_disponibles }}</span>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Porcentaje de Ocupación:</span>
+                    <span class="info-value">{{ curso.porcentaje_ocupacion|floatformat:1 }}%</span>
+                </div>
+            </div>
+
+            <div class="info-panel">
+                <h4>Información de Horario</h4>
+                <div class="info-group">
+                    <span class="info-label">Fecha de Inicio:</span>
+                    <span class="info-value">{{ curso.fecha_inicio|date:"d/m/Y" }}</span>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Fecha de Finalización:</span>
+                    <span class="info-value">{{ curso.fecha_fin|date:"d/m/Y" }}</span>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Horario:</span>
+                    <span class="info-value">{{ curso.horario }}</span>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Aula/Ambiente:</span>
+                    <span class="info-value">{{ curso.aula }}</span>
+                </div>
+            </div>
+
+            <div class="info-panel">
+                <h4>Información Adicional</h4>
+                <div class="info-group">
+                    <span class="info-label">Observaciones:</span>
+                    <span class="info-value">{{ curso.observaciones|default:"Sin observaciones" }}</span>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Fecha de Registro:</span>
+                    <span class="info-value">{{ curso.fecha_registro|date:"d/m/Y H:i" }}</span>
+                </div>
+            </div>
+
+            <div class="details-actions">
+                <a href="/cursos/editar/{{ curso.id }}" class="btn-edit-profile">Editar Curso</a>
+            </div>
+
+        </div>
+    </div>
+    
+    <div class="details-actions-bottom">
+        <a href="/cursos/" class="btn-back">← Volver a la Lista</a>
+    </div>
+
+</div>
+{% endblock %}

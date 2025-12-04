@@ -1,0 +1,75 @@
+{% extends "master.html" %}
+{% load static %}
+
+{% block title %}
+    Lista de Programas SENA
+{% endblock %}
+
+{% block content %}
+
+<div class="list-container">
+    
+    <div class="list-header-row">
+        <h1 class="list-title">Lista de Programas SENA</h1>
+
+        <div class="list-actions">
+            <span class="total-badge">
+                Total: {{ total_programas|default:"0" }} programas
+            </span>
+
+            <a href="/nuevo_programa/" class="btn-new-programa">
+                Nuevo Programa
+            </a>
+        </div>
+    </div>
+
+    <table class="sena-table">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Nombre</th>
+                <th>Nivel de Formación</th>
+                <th>Modalidad</th>
+                <th>Duración (Meses)</th>
+                <th>Estado</th>
+                <th class="actions-col">Acciones</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for programa in programas %}
+            <tr>
+                <td><a href="{% url 'programa:detalle_programa' programa.id %}">{{ programa.codigo }}</a></td>
+
+                <td>{{ programa.nombre }}</td> 
+
+                <td>{{ programa.get_nivel_formacion_display }}</td>
+
+                <td>{{ programa.get_modalidad_display }}</td>
+
+                <td>{{ programa.duracion_meses }}</td>
+
+                <td>{{ programa.get_estado_display }}</td>
+
+                <td class="actions-col">
+                    <a href="{% url 'programa:detalle_programa' programa.id %}" class="btn-action btn-view">Ver</a>
+                </td>
+            </tr>
+
+            {% empty %}
+            <tr>
+                <td colspan="7" style="text-align: center;">
+                    No hay programas registrados.
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'all.css' %}">
+{% endblock %}

@@ -1,0 +1,110 @@
+{% extends "master.html" %}
+{% load static %}
+
+{% block title %}
+    Detalles del Programa: {{ programa.nombre }}
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'details.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="details-container">
+    
+    <p class="breadcrumb">
+        <a href="/">Inicio</a> / 
+        <a href="{% url 'programa:programas_list' %}">Lista Programas</a> / 
+        {{ programa.nombre }}
+    </p>
+
+    <div class="profile-title-bar">
+        Detalles del Programa
+    </div>
+
+    <div class="profile-card-sena">
+        
+        <div class="profile-sidebar">
+            <div class="profile-avatar">
+                {{ programa.codigo.0 }}
+            </div>
+            <h3 class="profile-name">
+                {{ programa.codigo }}
+            </h3>
+        </div>
+        
+        <div class="profile-info-content">
+
+            <div class="info-panel">
+                <h4>Información General</h4>
+                <div class="info-group">
+                    <span class="info-label">Código:</span>
+                    <span class="info-value">{{ programa.codigo }}</span>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Nombre:</span>
+                    <span class="info-value">{{ programa.nombre }}</span>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Nivel de Formación:</span>
+                    <span class="info-value">{{ programa.get_nivel_formacion_display }}</span>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Modalidad:</span>
+                    <span class="info-value">{{ programa.get_modalidad_display }}</span>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Estado:</span>
+                    <span class="info-value">{{ programa.get_estado_display }}</span>
+                </div>
+            </div>
+
+            <div class="info-panel">
+                <h4>Duración y Ubicación</h4>
+                <div class="info-group">
+                    <span class="info-label">Duración (Meses):</span>
+                    <span class="info-value">{{ programa.duracion_meses }}</span>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Duración (Horas):</span>
+                    <span class="info-value">{{ programa.duracion_horas }}</span>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Centro de Formación:</span>
+                    <span class="info-value">{{ programa.centro_formacion }}</span>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Regional:</span>
+                    <span class="info-value">{{ programa.regional }}</span>
+                </div>
+            </div>
+
+            <div class="info-panel">
+                <h4>Descripción</h4>
+                <div class="info-group">
+                    <span class="info-label">Descripción del Programa:</span>
+                    <span class="info-value">{{ programa.descripcion }}</span>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Competencias a Desarrollar:</span>
+                    <span class="info-value">{{ programa.competencias }}</span>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Perfil de Egreso:</span>
+                    <span class="info-value">{{ programa.perfil_egreso }}</span>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Requisitos de Ingreso:</span>
+                    <span class="info-value">{{ programa.requisitos_ingreso }}</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+    <div class="details-actions-bottom">
+        <a href="{% url 'programa:programas_list' %}" class="btn-back">← Volver a la Lista</a>
+    </div>
+
+</div>
+{% endblock %}

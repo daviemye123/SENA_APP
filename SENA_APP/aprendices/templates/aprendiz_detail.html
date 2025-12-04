@@ -1,0 +1,92 @@
+{% extends "master.html" %}
+{% load static %}
+
+{% block title %}
+    Detalles de Aprendiz: {{ aprendiz.firstname }} {{ aprendiz.lastname }}
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'details.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="details-container">
+    
+    <p class="breadcrumb">
+        <a href="/">Inicio</a> / 
+        <a href="/aprendices/">Lista Aprendices</a> / 
+        {{ aprendiz.firstname }} {{ aprendiz.lastname }}
+    </p>
+
+    <div class="profile-title-bar">
+        Perfil del Aprendiz
+    </div>
+
+    <div class="profile-card-sena">
+        
+        <div class="profile-sidebar">
+            <div class="profile-avatar">
+                {{ aprendiz.firstname.0 }}{{ aprendiz.lastname.0 }}
+            </div>
+            <h3 class="profile-name">
+                {{ aprendiz.firstname }} <br> {{ aprendiz.lastname }}
+            </h3>
+        </div>
+        
+        <div class="profile-info-content">
+
+            <div class="info-panel">
+                <h4>Información Personal</h4>
+                <div class="info-group">
+                    <span class="info-label">Documento identidad:</span>
+                    <span class="info-value">{{ aprendiz.cedula }}</span>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Nombre:</span>
+                    <span class="info-value">{{ aprendiz.firstname }}</span>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Apellido:</span>
+                    <span class="info-value">{{ aprendiz.lastname }}</span>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Fecha Nacimiento:</span>
+                    <span class="info-value">{{ aprendiz.date_of_birth|date:"d/m/Y" }}</span>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Programa:</span>
+                    <span class="info-value">{{ aprendiz.programa }}</span>
+                </div>
+
+                
+            </div>
+
+            <div class="info-panel">
+                <h4>Información de Contacto</h4>
+                <div class="info-group">
+                    <span class="info-label">Correo:</span>
+                    <span class="info-value-link"><a href="mailto:{{ aprendiz.email }}">{{ aprendiz.email }}</a></span>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Teléfono:</span>
+                    <span class="info-value">{{ aprendiz.phone }}</span>
+                </div>
+                <div class="info-group">
+                    <span class="info-label">Ciudad:</span>
+                    <span class="info-value">{{ aprendiz.city }}</span>
+                </div>
+            </div>
+
+            <div class="details-actions">
+                <a href="editar/{{ aprendiz.id }}" class="btn-edit-profile">Editar Perfil</a>
+            </div>
+
+        </div>
+    </div>
+    
+    <div class="details-actions-bottom">
+        <a href="/aprendices/" class="btn-back">← Volver a la Lista</a>
+    </div>
+
+</div>
+{% endblock %}
