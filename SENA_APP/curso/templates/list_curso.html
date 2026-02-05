@@ -16,10 +16,7 @@
             <span class="total-badge">
                 Total: {{ total_cursos|default:"0" }} cursos
             </span>
-
-            <a href="/nuevo_curso/" class="btn-new-curso">
-                Nuevo Curso
-            </a>
+            <a href="{% url 'curso:crear_curso' %}" class="btn-action btn-view">Crear nuevo</a>
         </div>
     </div>
 
@@ -78,12 +75,14 @@
 
                 <td class="actions-col">
                     <a href="{% url 'curso:detail_curso' curso.id %}" class="btn-action btn-view">Ver</a>
+                    <a href="{% url 'curso:editar_curso' curso.id %}" class="btn-action btn-edit">Editar</a>
+                    <a href="{% url 'curso:eliminar_curso' curso.id %}" class="btn-action btn-delete">Eliminar</a>
                 </td>
             </tr>
 
             {% empty %}
             <tr>
-                <td colspan="11" style="text-align: center;">
+                <td colspan="12" style="text-align: center;">
                     No hay cursos registrados.
                 </td>
             </tr>

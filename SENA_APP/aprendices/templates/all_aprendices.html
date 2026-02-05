@@ -17,10 +17,7 @@
             <span class="total-badge">
                 Total: {{ total_aprendices|default:"0" }} aprendices
             </span>
-
-            <a href="/nuevo_aprendiz/" class="btn-new-aprendiz">
-                Nuevo Aprendiz
-            </a>
+            <a href="{% url 'aprendices:crear_aprendiz' %}" class="btn-action btn-view">Crear nuevo</a>
         </div>
     </div>
 
@@ -59,12 +56,14 @@
 
                 <td class="actions-col">
                     <a href="{% url 'aprendices:details' aprendiz.id %}" class="btn-action btn-view">Ver</a>
+                    <a href="{% url 'aprendices:editar_aprendiz' aprendiz.id %}" class="btn-action btn-edit">Editar</a>
+                    <a href="{% url 'aprendices:eliminar_aprendiz' aprendiz.id %}" class="btn-action btn-delete">Eliminar</a>
                 </td>
             </tr>
 
             {% empty %}
             <tr>
-                <td colspan="8" style="text-align: center;">
+                <td colspan="9" style="text-align: center;">
                     No hay aprendices registrados.
                 </td>
             </tr>

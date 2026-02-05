@@ -16,10 +16,7 @@
             <span class="total-badge">
                 Total: {{ total_programas|default:"0" }} programas
             </span>
-
-            <a href="/nuevo_programa/" class="btn-new-programa">
-                Nuevo Programa
-            </a>
+            <a href="{% url 'programa:crear_programa' %}" class="btn-action btn-view">Crear nuevo</a>
         </div>
     </div>
 
@@ -53,12 +50,14 @@
 
                 <td class="actions-col">
                     <a href="{% url 'programa:detalle_programa' programa.id %}" class="btn-action btn-view">Ver</a>
+                    <a href="{% url 'programa:editar_programa' programa.id %}" class="btn-action btn-edit">Editar</a>
+                    <a href="{% url 'programa:eliminar_programa' programa.id %}" class="btn-action btn-delete">Eliminar</a>
                 </td>
             </tr>
 
             {% empty %}
             <tr>
-                <td colspan="7" style="text-align: center;">
+                <td colspan="8" style="text-align: center;">
                     No hay programas registrados.
                 </td>
             </tr>

@@ -16,23 +16,18 @@
             <span class="total-badge">
                 Total: {{ total_instructores|default:"0" }} instructores
             </span>
-
-            {# ¡ENLACE ELIMINADO! La acción "Nuevo Instructor" ya no está aquí. #}
+            <a href="{% url 'instructores:crear_instructor' %}" class="btn-action btn-view">Crear nuevo</a>
         </div>
     </div>
 
     <table class="sena-table">
         <thead>
             <tr>
-                <th>Tipo Doc</th>
-                <th>Documento</th>
-                <th>Nombre Completo</th>
-                <th>Especialidad</th>
-                <th>Correo</th>
-                <th>Teléfono</th>
-                <th>Programa</th>
-                <th>Nivel Formación</th>
-                <th>Estado</th>
+                <th>proveedor</th>
+                <th>cantidad </th>
+                <th>precio</th>
+                <th>iva</th>
+                <th>descripcion</th>
                 <th class="actions-col">Acciones</th>
             </tr>
         </thead>
@@ -72,6 +67,8 @@
 
                 <td class="actions-col">
                     <a href="{% url 'instructores:instructor_detail' instructor.id %}" class="btn-action btn-view">Ver</a>
+                    <a href="{% url 'instructores:editar_instructor' instructor.id %}" class="btn-action btn-edit">Editar</a>
+                    <a href="{% url 'instructores:eliminar_instructor' instructor.id %}" class="btn-action btn-delete">Eliminar</a>
                 </td>
             </tr>
 

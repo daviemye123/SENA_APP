@@ -1,0 +1,50 @@
+{% extends 'master.html' %}
+
+{% block title %}Eliminar Programa - SENA APP{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow border-danger">
+            <div class="card-header bg-danger text-white">
+                <h3 class="card-title mb-0">
+                    <i class="bi bi-exclamation-triangle"></i> Confirmar Eliminación
+                </h3>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-warning">
+                    <i class="bi bi-exclamation-triangle-fill"></i>
+                    <strong>¡Atención!</strong> Esta acción no se puede deshacer.
+                </div>
+                
+                <p class="lead">¿Está seguro que desea eliminar el siguiente programa?</p>
+                
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ object.nombre }}</h5>
+                        <p class="card-text">
+                            <strong>Código:</strong> {{ object.codigo }}<br>
+                            <strong>Nivel de Formación:</strong> {{ object.get_nivel_formacion_display }}<br>
+                            <strong>Modalidad:</strong> {{ object.get_modalidad_display }}<br>
+                            <strong>Duración:</strong> {{ object.duracion_meses }} meses / {{ object.duracion_horas }} horas<br>
+                            <strong>Estado:</strong> {{ object.get_estado_display }}
+                        </p>
+                    </div>
+                </div>
+                
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a href="{% url 'programa:programas_list' %}" class="btn btn-secondary me-md-2">
+                            <i class="bi bi-x-circle"></i> Cancelar
+                        </a>
+                        <button type="submit" class="btn btn-danger">
+                            <i class="bi bi-trash"></i> Sí, Eliminar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
