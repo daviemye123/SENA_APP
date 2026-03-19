@@ -17,7 +17,7 @@
             <span class="total-badge">
                 Total: {{ total_aprendices|default:"0" }} aprendices
             </span>
-            <a href="{% url 'aprendices:crear_aprendiz' %}" class="btn-action btn-view">Crear nuevo</a>
+            <a href="{% url 'aprendices:aprendiz_create' %}" class="btn-action btn-view">Crear nuevo</a>  {# era crear_aprendiz #}
         </div>
     </div>
 
@@ -25,11 +25,11 @@
         <thead>
             <tr>
                 <th>Documento</th>
-                <th>Nombre Completo</th> {# Cambiado a Nombre Completo #}
+                <th>Nombre Completo</th>
                 <th>Correo</th>
                 <th>Teléfono</th>
                 <th>Ciudad</th>
-                <th>Programa</th> {# Añadida columna Programa #}
+                <th>Programa</th>
                 <th>Fecha Nacimiento</th>
                 <th class="actions-col">Acciones</th>
             </tr>
@@ -38,9 +38,9 @@
         <tbody>
             {% for aprendiz in aprendices %}
             <tr>
-                <td><a href="{% url 'aprendices:details' aprendiz.id %}">{{ aprendiz.cedula }}</a></td> {# Enlace al documento #}
+                <td><a href="{% url 'aprendices:details' aprendiz.id %}">{{ aprendiz.cedula }}</a></td>
 
-                <td>{{ aprendiz.firstname }} {{ aprendiz.lastname }}</td> 
+                <td>{{ aprendiz.firstname }} {{ aprendiz.lastname }}</td>
 
                 <td>
                     <a href="mailto:{{ aprendiz.email }}">
@@ -50,14 +50,14 @@
 
                 <td>{{ aprendiz.phone }}</td>
                 <td>{{ aprendiz.city }}</td>
-                <td>{{ aprendiz.programa }}</td> {# Asumo que tienes un campo 'programa' #}
+                <td>{{ aprendiz.programa }}</td>
 
                 <td>{{ aprendiz.date_of_birth|date:"d/m/Y" }}</td>
 
                 <td class="actions-col">
                     <a href="{% url 'aprendices:details' aprendiz.id %}" class="btn-action btn-view">Ver</a>
-                    <a href="{% url 'aprendices:editar_aprendiz' aprendiz.id %}" class="btn-action btn-edit">Editar</a>
-                    <a href="{% url 'aprendices:eliminar_aprendiz' aprendiz.id %}" class="btn-action btn-delete">Eliminar</a>
+                    <a href="{% url 'aprendices:aprendiz_update' aprendiz.id %}" class="btn-action btn-edit">Editar</a>  {# era editar_aprendiz #}
+                    <a href="{% url 'aprendices:aprendiz_delete' aprendiz.id %}" class="btn-action btn-delete">Eliminar</a>  {# era eliminar_aprendiz #}
                 </td>
             </tr>
 
